@@ -19,9 +19,17 @@ abstract class SmartPagHandler {
     return {};
   }
 
-  static Future<void> realizarEstorno() async {
+  //'codigoDaTransacao'
+  // 'identificadorDaTransacao'
+  static Future<void> realizarEstorno({
+    String? codigoDaTransacao,
+    String? identificadorDaTransacao,
+  }) async {
     if (pagamentoContractInject) {
-      return sl<PagamentoContract>().realizarEstorno();
+      return sl<PagamentoContract>().realizarEstorno(
+        transactionCode: codigoDaTransacao,
+        transactionId: identificadorDaTransacao,
+      );
     }
 
     return;
