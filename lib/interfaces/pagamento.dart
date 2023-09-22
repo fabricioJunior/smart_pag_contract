@@ -6,4 +6,6 @@ abstract class PagamentoContract {
     int parcelas,
     int valor,
   );
+
+  Future<void> realizarEstorno();
 }

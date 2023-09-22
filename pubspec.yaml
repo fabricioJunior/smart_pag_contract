@@ -1,6 +1,6 @@
 name: smart_pag_contract
 description: apenas assinaturas de métodos para auxilio de deploy e testagem em FlutterFlow
-version: 0.0.1
+version: 0.0.3
 homepage:
 
 environment:
@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  get_it: ^7.6.4
 
 dev_dependencies:
   flutter_test:
