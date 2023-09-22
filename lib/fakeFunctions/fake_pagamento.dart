@@ -11,5 +11,8 @@ class FakePagamento extends PagamentoContract {
   }
 
   @override
-  Future<void> realizarEstorno() async {}
+  Future<void> realizarEstorno({
+    String? transactionCode,
+    String? transactionId,
+  }) async {}
 }

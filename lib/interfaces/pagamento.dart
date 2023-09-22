@@ -7,5 +7,8 @@ abstract class PagamentoContract {
     int valor,
   );
 
-  Future<void> realizarEstorno();
+  Future<void> realizarEstorno({
+    String? transactionCode,
+    String? transactionId,
+  });
 }
