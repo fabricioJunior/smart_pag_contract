@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
 import 'package:smart_pag_contract/interfaces/pagamento.dart';
 
 class FakePagamento extends PagamentoContract {
@@ -6,8 +9,10 @@ class FakePagamento extends PagamentoContract {
     String formaDePagamento,
     int parcelas,
     int valor,
+    BuildContext context,
   ) async {
-    return {};
+    log('forma de pagamento: $formaDePagamento \n parcelas: $parcelas \n valor: $valor');
+    return {'codigoDaTransacao': 'codigoFake'};
   }
 
   @override

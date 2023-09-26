@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 bool pagamentoContractInject = false;
 
 abstract class PagamentoContract {
@@ -5,6 +7,7 @@ abstract class PagamentoContract {
     String formaDePagamento,
     int parcelas,
     int valor,
+    BuildContext context,
   );
 
   Future<void> realizarEstorno({

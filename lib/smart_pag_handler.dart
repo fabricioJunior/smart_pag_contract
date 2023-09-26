@@ -1,9 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:smart_pag_contract/interfaces/pagamento.dart';
 
 import 'injections/injections.dart';
 
 abstract class SmartPagHandler {
   static Future<Map<String, String>> fazerPagamento(
+    BuildContext context,
     String formaDePagamento,
     int parcelas,
     int valor,
@@ -13,6 +15,7 @@ abstract class SmartPagHandler {
         formaDePagamento,
         parcelas,
         valor,
+        context,
       );
     }
 
