@@ -6,7 +6,7 @@ import 'injections/injections.dart';
 abstract class SmartPagHandler {
   static Future<Map<String, String>> fazerPagamento(
     BuildContext context,
-    String formaDePagamento,
+    FormaDePagamento formaDePagamento,
     int parcelas,
     int valor,
   ) async {

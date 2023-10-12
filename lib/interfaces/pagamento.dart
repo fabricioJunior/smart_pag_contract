@@ -4,7 +4,7 @@ bool pagamentoContractInject = false;
 
 abstract class PagamentoContract {
   Future<Map<String, String>> fazerPagamento(
-    String formaDePagamento,
+    FormaDePagamento formaDePagamento,
     int parcelas,
     int valor,
     BuildContext context,
@@ -14,4 +14,22 @@ abstract class PagamentoContract {
     String? transactionCode,
     String? transactionId,
   });
+}
+
+enum FormaDePagamento {
+  credito(2),
+  debito(1),
+  vale(3),
+  pix(4);
+
+  final int codigo;
+  const FormaDePagamento(this.codigo);
+}
+
+extension DataIntToFormaDePagamento on int {
+  FormaDePagamento toFormaDePagamento() {
+    return FormaDePagamento.values.firstWhere(
+      (formaDePagamento) => formaDePagamento.codigo == this,
+    );
+  }
 }
