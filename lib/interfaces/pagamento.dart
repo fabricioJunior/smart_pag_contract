@@ -14,6 +14,10 @@ abstract class PagamentoContract {
     String? transactionCode,
     String? transactionId,
   });
+
+  Future<void> imprimirArquivo({
+    required String filePath,
+  });
 }
 
 enum FormaDePagamento {

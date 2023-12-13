@@ -20,4 +20,9 @@ class FakePagamento extends PagamentoContract {
     String? transactionCode,
     String? transactionId,
   }) async {}
+  
+  @override
+  Future<void> imprimirArquivo({required String filePath}) async {
+     return; 
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_pag_contract/interfaces/pagamento.dart';
 
+import 'fakeFunctions/fake_pagamento.dart';
 import 'injections/injections.dart';
 
 abstract class SmartPagHandler {
@@ -19,8 +20,16 @@ abstract class SmartPagHandler {
       );
     }
 
-    return {};
+    return FakePagamento().fazerPagamento(formaDePagamento, parcelas, valor, context);
   }
+
+  static Future<void> imprimirArquivo(String filePath){ 
+     if(pagamentoContractInject){
+      return sl<PagamentoContract>().imprimirArquivo(filePath: filePath);
+     }
+
+     return FakePagamento().imprimirArquivo(filePath: filePath);
+   }
 
   //'codigoDaTransacao'
   // 'identificadorDaTransacao'
@@ -35,6 +44,6 @@ abstract class SmartPagHandler {
       );
     }
 
-    return;
+    return  FakePagamento().realizarEstorno();
   }
 }
