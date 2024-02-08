@@ -5,7 +5,7 @@ import 'fakeFunctions/fake_pagamento.dart';
 import 'injections/injections.dart';
 
 abstract class SmartPagHandler {
-  static Future<Map<String, String>> fazerPagamento(
+  static Future<PagamentoResult> fazerPagamento(
     BuildContext context,
     FormaDePagamento formaDePagamento,
     int parcelas,
@@ -20,16 +20,17 @@ abstract class SmartPagHandler {
       );
     }
 
-    return FakePagamento().fazerPagamento(formaDePagamento, parcelas, valor, context);
+    return FakePagamento()
+        .fazerPagamento(formaDePagamento, parcelas, valor, context);
   }
 
-  static Future<void> imprimirArquivo(String filePath){ 
-     if(pagamentoContractInject){
+  static Future<void> imprimirArquivo(String filePath) {
+    if (pagamentoContractInject) {
       return sl<PagamentoContract>().imprimirArquivo(filePath: filePath);
-     }
+    }
 
-     return FakePagamento().imprimirArquivo(filePath: filePath);
-   }
+    return FakePagamento().imprimirArquivo(filePath: filePath);
+  }
 
   //'codigoDaTransacao'
   // 'identificadorDaTransacao'
@@ -44,6 +45,12 @@ abstract class SmartPagHandler {
       );
     }
 
-    return  FakePagamento().realizarEstorno();
+    return FakePagamento().realizarEstorno();
+  }
+
+  Future<void> devolucao(String identificadorDaTransacao) {
+    return SmartPagHandler.realizarEstorno(
+      identificadorDaTransacao: identificadorDaTransacao,
+    );
   }
 }

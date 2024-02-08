@@ -5,14 +5,23 @@ import 'package:smart_pag_contract/interfaces/pagamento.dart';
 
 class FakePagamento extends PagamentoContract {
   @override
-  Future<Map<String, String>> fazerPagamento(
+  Future<PagamentoResult> fazerPagamento(
     FormaDePagamento formaDePagamento,
     int parcelas,
     int valor,
     BuildContext context,
   ) async {
     log('forma de pagamento: $formaDePagamento \n parcelas: $parcelas \n valor: $valor');
-    return {'codigoDaTransacao': 'codigoFake'};
+    return PagamentoResult(
+      cardBrand: 'master',
+      cardBin: 'card bin',
+      nsu: '12314512jdajsb',
+      date: DateTime.now(),
+      time: DateTime.now(),
+      hostNSU: 'hostNSU',
+      transactionID: '90394090',
+      transactionCode: 'transactionCode',
+    );
   }
 
   @override
@@ -20,9 +29,9 @@ class FakePagamento extends PagamentoContract {
     String? transactionCode,
     String? transactionId,
   }) async {}
-  
+
   @override
   Future<void> imprimirArquivo({required String filePath}) async {
-     return; 
+    return;
   }
 }
