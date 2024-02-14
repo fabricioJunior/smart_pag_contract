@@ -1,6 +1,6 @@
 name: smart_pag_contract
 description: apenas assinaturas de métodos para auxilio de deploy e testagem em FlutterFlow
-version: 0.0.8
+version: 0.0.11
 repository: https://github.com/fabricioJunior/pagSeguroSmartPos
 
 environment:

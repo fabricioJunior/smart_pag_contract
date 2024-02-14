@@ -9,8 +9,9 @@ class FakePagamento extends PagamentoContract {
     FormaDePagamento formaDePagamento,
     int parcelas,
     int valor,
-    BuildContext context,
-  ) async {
+    BuildContext context, {
+    String? deepLinkReturnSchema,
+  }) async {
     log('forma de pagamento: $formaDePagamento \n parcelas: $parcelas \n valor: $valor');
     return PagamentoResult(
       cardBrand: 'master',

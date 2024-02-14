@@ -7,8 +7,9 @@ abstract class PagamentoContract {
     FormaDePagamento formaDePagamento,
     int parcelas,
     int valor,
-    BuildContext context,
-  );
+    BuildContext context, {
+    String? deepLinkReturnSchema,
+  });
 
   Future<void> realizarEstorno({
     String? transactionCode,
@@ -48,6 +49,8 @@ class PagamentoResult {
   final String transactionID;
   final String transactionCode;
 
+  final String? erro;
+
   PagamentoResult({
     required this.cardBrand,
     required this.cardBin,
@@ -57,5 +60,14 @@ class PagamentoResult {
     required this.hostNSU,
     required this.transactionID,
     required this.transactionCode,
-  });
+  }) : erro = null;
+  PagamentoResult.erro({required this.erro})
+      : cardBin = 'erro',
+        cardBrand = 'erro',
+        nsu = 'erro ',
+        date = DateTime.now(),
+        time = DateTime.now(),
+        hostNSU = 'erro',
+        transactionCode = 'erro',
+        transactionID = 'erro';
 }
