@@ -19,6 +19,10 @@ abstract class PagamentoContract {
   Future<void> imprimirArquivo({
     required String filePath,
   });
+
+  Future<String> serialDaMaquina();
+
+  String get tipoDaMaquina;
 }
 
 enum FormaDePagamento {
