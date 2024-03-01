@@ -9,14 +9,16 @@ abstract class SmartPagHandler {
     BuildContext context,
     FormaDePagamento formaDePagamento,
     int parcelas,
-    int valor,
-  ) async {
+    int valor, {
+    String? deepLinkReturnSchema,
+  }) async {
     if (pagamentoContractInject) {
       return sl<PagamentoContract>().fazerPagamento(
         formaDePagamento,
         parcelas,
         valor,
         context,
+        deepLinkReturnSchema: deepLinkReturnSchema,
       );
     }
 
