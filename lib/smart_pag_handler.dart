@@ -50,9 +50,10 @@ abstract class SmartPagHandler {
     return FakePagamento().realizarEstorno();
   }
 
-  Future<void> devolucao(String identificadorDaTransacao) {
-    return SmartPagHandler.realizarEstorno(
-      identificadorDaTransacao: identificadorDaTransacao,
-    );
+  static Future<String> serialDaMaquina() async {
+    if (pagamentoContractInject) {
+      return sl<PagamentoContract>().serialDaMaquina();
+    }
+    return '12391023u1';
   }
 }
