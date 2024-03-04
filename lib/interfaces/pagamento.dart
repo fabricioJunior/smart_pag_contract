@@ -47,8 +47,8 @@ class PagamentoResult {
   final String cardBrand;
   final String cardBin;
   final String nsu;
-  final DateTime date;
-  final DateTime time;
+  final String date;
+  final String time;
   final String hostNSU;
   final String transactionID;
   final String transactionCode;
@@ -69,8 +69,8 @@ class PagamentoResult {
       : cardBin = 'erro',
         cardBrand = 'erro',
         nsu = 'erro ',
-        date = DateTime.now(),
-        time = DateTime.now(),
+        date = '',
+        time = '',
         hostNSU = 'erro',
         transactionCode = 'erro',
         transactionID = 'erro';

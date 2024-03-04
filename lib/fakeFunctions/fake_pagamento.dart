@@ -17,8 +17,8 @@ class FakePagamento extends PagamentoContract {
       cardBrand: 'master',
       cardBin: 'card bin',
       nsu: '12314512jdajsb',
-      date: DateTime.now(),
-      time: DateTime.now(),
+      date: '',
+      time: '',
       hostNSU: 'hostNSU',
       transactionID: '90394090',
       transactionCode: 'transactionCode',
@@ -35,4 +35,12 @@ class FakePagamento extends PagamentoContract {
   Future<void> imprimirArquivo({required String filePath}) async {
     return;
   }
+
+  @override
+  Future<String> serialDaMaquina() async {
+    return 'serial';
+  }
+
+  @override
+  String get tipoDaMaquina => 'maquinaTeste';
 }
