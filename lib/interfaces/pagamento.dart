@@ -9,6 +9,7 @@ abstract class PagamentoContract {
     int valor,
     BuildContext context, {
     String? deepLinkReturnSchema,
+    bool? imprimirComprovanteAutomaticamente,
   });
 
   Future<void> realizarEstorno({
@@ -18,6 +19,7 @@ abstract class PagamentoContract {
 
   Future<void> imprimirArquivo({
     required String filePath,
+    required BuildContext context,
   });
 
   Future<String> serialDaMaquina();

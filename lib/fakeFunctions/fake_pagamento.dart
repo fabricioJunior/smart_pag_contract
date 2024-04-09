@@ -11,6 +11,7 @@ class FakePagamento extends PagamentoContract {
     int valor,
     BuildContext context, {
     String? deepLinkReturnSchema,
+    bool? imprimirComprovanteAutomaticamente,
   }) async {
     log('forma de pagamento: $formaDePagamento \n parcelas: $parcelas \n valor: $valor');
     return PagamentoResult(
@@ -32,7 +33,8 @@ class FakePagamento extends PagamentoContract {
   }) async {}
 
   @override
-  Future<void> imprimirArquivo({required String filePath}) async {
+  Future<void> imprimirArquivo(
+      {required String filePath, required BuildContext context}) async {
     return;
   }
 

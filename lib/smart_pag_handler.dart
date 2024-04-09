@@ -11,6 +11,7 @@ abstract class SmartPagHandler {
     int parcelas,
     int valor, {
     String? deepLinkReturnSchema,
+    bool? imprimirComprovanteAutomaticamente,
   }) async {
     if (pagamentoContractInject) {
       return sl<PagamentoContract>().fazerPagamento(
@@ -19,19 +20,30 @@ abstract class SmartPagHandler {
         valor,
         context,
         deepLinkReturnSchema: deepLinkReturnSchema,
+        imprimirComprovanteAutomaticamente: imprimirComprovanteAutomaticamente,
       );
     }
 
-    return FakePagamento()
-        .fazerPagamento(formaDePagamento, parcelas, valor, context);
+    return FakePagamento().fazerPagamento(
+      formaDePagamento,
+      parcelas,
+      valor,
+      context,
+      deepLinkReturnSchema: deepLinkReturnSchema,
+      imprimirComprovanteAutomaticamente: imprimirComprovanteAutomaticamente,
+    );
   }
 
-  static Future<void> imprimirArquivo(String filePath) {
+  static Future<void> imprimirArquivo(String filePath, BuildContext context) {
     if (pagamentoContractInject) {
-      return sl<PagamentoContract>().imprimirArquivo(filePath: filePath);
+      return sl<PagamentoContract>()
+          .imprimirArquivo(filePath: filePath, context: context);
     }
 
-    return FakePagamento().imprimirArquivo(filePath: filePath);
+    return FakePagamento().imprimirArquivo(
+      filePath: filePath,
+      context: context,
+    );
   }
 
   //'codigoDaTransacao'
