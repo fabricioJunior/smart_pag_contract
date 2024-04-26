@@ -5,14 +5,11 @@ import 'package:smart_pag_contract/interfaces/pagamento.dart';
 
 class FakePagamento extends PagamentoContract {
   @override
-  Future<PagamentoResult> fazerPagamento(
-    FormaDePagamento formaDePagamento,
-    int parcelas,
-    int valor,
-    BuildContext context, {
-    String? deepLinkReturnSchema,
-    bool? imprimirComprovanteAutomaticamente,
-  }) async {
+  Future<PagamentoResult> fazerPagamento(FormaDePagamento formaDePagamento,
+      int parcelas, int valor, BuildContext context,
+      {String? deepLinkReturnSchema,
+      bool? imprimirComprovanteAutomaticamente,
+      FormaDeCobrancaDeJuros? formaDeCobranca}) async {
     log('forma de pagamento: $formaDePagamento \n parcelas: $parcelas \n valor: $valor');
     return PagamentoResult(
       cardBrand: 'master',

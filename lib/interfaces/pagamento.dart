@@ -3,14 +3,11 @@ import 'package:flutter/material.dart';
 bool pagamentoContractInject = false;
 
 abstract class PagamentoContract {
-  Future<PagamentoResult> fazerPagamento(
-    FormaDePagamento formaDePagamento,
-    int parcelas,
-    int valor,
-    BuildContext context, {
-    String? deepLinkReturnSchema,
-    bool? imprimirComprovanteAutomaticamente,
-  });
+  Future<PagamentoResult> fazerPagamento(FormaDePagamento formaDePagamento,
+      int parcelas, int valor, BuildContext context,
+      {String? deepLinkReturnSchema,
+      bool? imprimirComprovanteAutomaticamente,
+      FormaDeCobrancaDeJuros? formaDeCobranca});
 
   Future<void> realizarEstorno({
     String? transactionCode,
@@ -35,6 +32,11 @@ enum FormaDePagamento {
 
   final int codigo;
   const FormaDePagamento(this.codigo);
+}
+
+enum FormaDeCobrancaDeJuros {
+  jurosCobradoDoCliente,
+  jurosCobradoDoVendedor,
 }
 
 extension DataIntToFormaDePagamento on int {
