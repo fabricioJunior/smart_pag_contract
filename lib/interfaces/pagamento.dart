@@ -10,6 +10,9 @@ abstract class PagamentoContract {
       FormaDeCobrancaDeJuros? formaDeCobranca});
 
   Future<void> realizarEstorno({
+    required BuildContext context,
+    int? valor,
+    bool? permiteEditarValor,
     String? transactionCode,
     String? transactionId,
   });
