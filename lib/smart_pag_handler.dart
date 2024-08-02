@@ -54,17 +54,21 @@ abstract class SmartPagHandler {
   //'codigoDaTransacao'
   // 'identificadorDaTransacao'
   static Future<void> realizarEstorno({
+    required BuildContext context,
+    int? valor,
     String? codigoDaTransacao,
     String? identificadorDaTransacao,
   }) async {
     if (pagamentoContractInject) {
       return sl<PagamentoContract>().realizarEstorno(
-        transactionCode: codigoDaTransacao,
-        transactionId: identificadorDaTransacao,
-      );
+          context: context,
+          transactionCode: codigoDaTransacao,
+          transactionId: identificadorDaTransacao,
+          permiteEditarValor: false,
+          valor: valor);
     }
 
-    return FakePagamento().realizarEstorno();
+    return FakePagamento().realizarEstorno(context: context);
   }
 
   static Future<String> serialDaMaquina() async {

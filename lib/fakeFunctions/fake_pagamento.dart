@@ -24,12 +24,6 @@ class FakePagamento extends PagamentoContract {
   }
 
   @override
-  Future<void> realizarEstorno({
-    String? transactionCode,
-    String? transactionId,
-  }) async {}
-
-  @override
   Future<void> imprimirArquivo(
       {required String filePath, required BuildContext context}) async {
     return;
@@ -42,4 +36,15 @@ class FakePagamento extends PagamentoContract {
 
   @override
   String get tipoDaMaquina => 'maquinaTeste';
+
+  @override
+  Future<void> realizarEstorno(
+      {required BuildContext context,
+      int? valor,
+      bool? permiteEditarValor,
+      String? transactionCode,
+      String? transactionId}) {
+    // TODO: implement realizarEstorno
+    throw UnimplementedError();
+  }
 }
