@@ -3,6 +3,7 @@ import 'package:smart_pag_contract/interfaces/pagamento.dart';
 
 import 'fakeFunctions/fake_pagamento.dart';
 import 'injections/injections.dart';
+import 'interfaces/log.dart';
 
 abstract class SmartPagHandler {
   static Future<PagamentoResult> fazerPagamento(
@@ -76,5 +77,25 @@ abstract class SmartPagHandler {
       return sl<PagamentoContract>().serialDaMaquina();
     }
     return '12391023u1';
+  }
+
+  static Future<String> tipoMaquina() async {
+    if (pagamentoContractInject) {
+      return sl<PagamentoContract>().tipoDaMaquina;
+    }
+    return 'teste';
+  }
+
+  static Future<List<Log>> recuperarLogsUltimaTransacao() async {
+    if (pagamentoContractInject) {
+      return sl<PagamentoContract>().recuperarLogsUltimaTransacao();
+    }
+    return [];
+  }
+
+  static Future<void> salvarLog(Log log) async {
+    if (pagamentoContractInject) {
+      await sl<PagamentoContract>().salvarLog(log);
+    }
   }
 }

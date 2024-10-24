@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:smart_pag_contract/interfaces/log.dart';
 import 'package:smart_pag_contract/interfaces/pagamento.dart';
 
 class FakePagamento extends PagamentoContract {
@@ -24,8 +25,10 @@ class FakePagamento extends PagamentoContract {
   }
 
   @override
-  Future<void> imprimirArquivo(
-      {required String filePath, required BuildContext context}) async {
+  Future<void> imprimirArquivo({
+    required String filePath,
+    required BuildContext context,
+  }) async {
     return;
   }
 
@@ -45,6 +48,18 @@ class FakePagamento extends PagamentoContract {
       String? transactionCode,
       String? transactionId}) {
     // TODO: implement realizarEstorno
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<Log>> recuperarLogsUltimaTransacao() {
+    // TODO: implement recuperarLogsUltimaTransacao
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> salvarLog(Log log) {
+    // TODO: implement salvarLog
     throw UnimplementedError();
   }
 }

@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:smart_pag_contract/interfaces/log.dart';
 
 bool pagamentoContractInject = false;
 
 abstract class PagamentoContract {
-  Future<PagamentoResult> fazerPagamento(FormaDePagamento formaDePagamento,
-      int parcelas, int valor, BuildContext context,
-      {String? deepLinkReturnSchema,
-      bool? imprimirComprovanteAutomaticamente,
-      FormaDeCobrancaDeJuros? formaDeCobranca});
+  Future<PagamentoResult> fazerPagamento(
+    FormaDePagamento formaDePagamento,
+    int parcelas,
+    int valor,
+    BuildContext context, {
+    String? deepLinkReturnSchema,
+    bool? imprimirComprovanteAutomaticamente,
+    FormaDeCobrancaDeJuros? formaDeCobranca,
+  });
 
   Future<void> realizarEstorno({
     required BuildContext context,
@@ -23,6 +28,10 @@ abstract class PagamentoContract {
   });
 
   Future<String> serialDaMaquina();
+
+  Future<List<Log>> recuperarLogsUltimaTransacao();
+
+  Future<void> salvarLog(Log log);
 
   String get tipoDaMaquina;
 }
