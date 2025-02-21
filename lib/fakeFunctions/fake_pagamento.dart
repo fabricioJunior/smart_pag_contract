@@ -41,25 +41,22 @@ class FakePagamento extends PagamentoContract {
   String get tipoDaMaquina => 'maquinaTeste';
 
   @override
-  Future<void> realizarEstorno(
+  Future<bool> realizarEstorno(
       {required BuildContext context,
       int? valor,
       bool? permiteEditarValor,
       String? transactionCode,
-      String? transactionId}) {
-    // TODO: implement realizarEstorno
-    throw UnimplementedError();
+      String? transactionId}) async {
+    return true;
   }
 
   @override
   Future<List<Log>> recuperarLogsUltimaTransacao() {
-    // TODO: implement recuperarLogsUltimaTransacao
     throw UnimplementedError();
   }
 
   @override
   Future<void> salvarLog(Log log) {
-    // TODO: implement salvarLog
     throw UnimplementedError();
   }
 }

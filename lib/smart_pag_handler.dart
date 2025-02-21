@@ -54,7 +54,7 @@ abstract class SmartPagHandler {
 
   //'codigoDaTransacao'
   // 'identificadorDaTransacao'
-  static Future<void> realizarEstorno({
+  static Future<bool?> realizarEstorno({
     required BuildContext context,
     int? valor,
     String? codigoDaTransacao,

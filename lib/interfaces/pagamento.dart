@@ -14,7 +14,7 @@ abstract class PagamentoContract {
     FormaDeCobrancaDeJuros? formaDeCobranca,
   });
 
-  Future<void> realizarEstorno({
+  Future<bool> realizarEstorno({
     required BuildContext context,
     int? valor,
     bool? permiteEditarValor,
